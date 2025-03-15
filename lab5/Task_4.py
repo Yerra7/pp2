@@ -1,6 +1,6 @@
 import re
 
-with open("row.txt", "r", encoding="utf-8") as file:
+with open(r"C:\Users\Acer Nitro 5\Desktop\pp 2\lab5\row.txt") as file:
     data = file.read()
 
 pattern = r"[A-Z][a-z]+"
