@@ -1,3 +1,4 @@
+import os
 def path_info(path):
     if os.path.exists(path):
         print("Filename:", os.path.basename(path))
