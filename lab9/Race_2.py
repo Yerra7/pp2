@@ -70,14 +70,14 @@ class Coin(pygame.sprite.Sprite):
         self.image = pygame.image.load(r"C:\Users\Acer Nitro 5\Downloads\PygameTutorial_3_0\star.png")
         self.image = pygame.transform.scale(self.image, (30, 30))  # Resize the coin
         self.rect = self.image.get_rect()
-        self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
+        self.rect.center = (random.randint(200, SCREEN_WIDTH - 40), 0)
         self.weight = weight  # Set coin's weight, randomize when created
 
     def move(self):
         self.rect.move_ip(0, 5)  # Move down 5 pixels per frame
         if self.rect.bottom > SCREEN_HEIGHT:
             self.rect.top = 0
-            self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
+            self.rect.center = (random.randint(200, SCREEN_WIDTH - 40), 0)
 
     def draw(self, surface):
         surface.blit(self.image, self.rect)
@@ -101,7 +101,6 @@ while True:
             sys.exit()
 
     P1.update()
-    E1.move()
 
     for coin in coins:
         coin.move()
@@ -111,8 +110,10 @@ while True:
         if pygame.sprite.collide_rect(P1, coin):
             coins_collected += coin.weight  # Add the weight of the collected coin to the score
             coin.rect.top = 0
-            coin.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)  # Reposition the coin
+            coin.rect.center = (random.randint(200, SCREEN_WIDTH - 40), 0)  # Reposition the coin
             coin.weight = random.randint(1, 3)  # Re-randomize the weight
+    E1.move()
+    
 
     # Check for game over
     if pygame.sprite.collide_rect(P1, E1):
